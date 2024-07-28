@@ -1,6 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Header from './Components/Header';
+import HomePage from './Pages/Homepage';
+import CategoryPage from './Pages/Category';
+import ItemPage from './Pages/ItemPage';
+import CartPage from './Pages/CartPage';
+import OrdersPage from './Pages/OrdersPage';
+
 
 function App() {
   return (
