@@ -2,14 +2,16 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { addToCart, updateCart } from '../store/actions';
+import { Item, Order, State } from '../Shared/interface';
+
 
 const ItemPage = () => {
   const { itemId } = useParams();
-  const item = useSelector(state =>
-    state.categories.flatMap(cat => cat.items).find(it => it.id === parseInt(itemId))
+  const item: Item  = useSelector((state: State) =>
+    state.categories.flatMap(cat => cat.items).find(it => it.id === parseInt(itemId as string)) as Item
   );
-  const cartItem = useSelector(state =>
-    state.cart.find(it => it.id === parseInt(itemId))
+  const cartItem = useSelector((state: State) =>
+    state.cart.find(it => it.id === parseInt(itemId as string))
   );
   const dispatch = useDispatch();
 
@@ -23,8 +25,8 @@ const ItemPage = () => {
 
   return (
     <div>
-      <h2>{item.name}</h2>
-      <p>{item.description}</p>
+      <h2>{(item as Item).name}</h2>
+      <p>{(item as Item).description}</p>
       <button onClick={handleAddToCart}>Add to Cart</button>
     </div>
   );

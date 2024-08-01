@@ -1,6 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Header from './Components/Header';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import HeaderNav from './Components/Header';
 import HomePage from './Pages/Homepage';
 import CategoryPage from './Pages/Category';
 import ItemPage from './Pages/ItemPage';
@@ -10,22 +9,16 @@ import OrdersPage from './Pages/OrdersPage';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <HeaderNav />
+      <Routes>
+        <Route path="/"  Component={HomePage} />
+        <Route path="/category/:categoryId" Component={CategoryPage} />
+        <Route path="/item/:itemId" Component={ItemPage} />
+        <Route path="/cart" Component={CartPage} />
+        <Route path="/orders" Component={OrdersPage} />
+      </Routes>
+    </Router>
   );
 }
 

@@ -1,12 +1,13 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateCart, removeFromCart, placeOrder } from '../store/actions';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { State } from '../Shared/interface';
 
 const CartPage = () => {
-  const cart = useSelector(state => state.cart);
+  const cart = useSelector((state: State) => state.cart);
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handlePlaceOrder = () => {
     const order = {
@@ -14,7 +15,7 @@ const CartPage = () => {
       items: cart
     };
     dispatch(placeOrder(order));
-    history.push('/orders');
+    navigate('/orders');
   };
 
   return (

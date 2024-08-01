@@ -1,30 +1,31 @@
+import { State } from '../Shared/interface';
 import { ADD_TO_CART, REMOVE_FROM_CART, UPDATE_CART, PLACE_ORDER } from './actions';
 
-const initialState = {
-    categories: [
-      {
-        id: 1,
-        name: 'Electronics',
-        items: [
-          { id: 1, name: 'Laptop', description: 'A powerful laptop', price: 1000 },
-          { id: 2, name: 'Smartphone', description: 'A modern smartphone', price: 800 },
-        ],
-      },
-      {
-        id: 2,
-        name: 'Books',
-        items: [
-          { id: 3, name: 'React Book', description: 'Learn React', price: 30 },
-          { id: 4, name: 'JavaScript Book', description: 'Learn JavaScript', price: 25 },
-        ],
-      },
-    ],
-    cart: [],
-    orders: []
-  };
-  
+const initialState: State = {
+  categories: [
+    {
+      id: 1,
+      name: 'Electronics',
+      items: [
+        { id: 1, name: 'Laptop', description: 'A powerful laptop', price: 1000 },
+        { id: 2, name: 'Smartphone', description: 'A modern smartphone', price: 800 },
+      ],
+    },
+    {
+      id: 2,
+      name: 'Books',
+      items: [
+        { id: 3, name: 'React Book', description: 'Learn React', price: 30 },
+        { id: 4, name: 'JavaScript Book', description: 'Learn JavaScript', price: 25 },
+      ],
+    },
+  ],
+  cart: [],
+  orders: []
+};
 
-const rootReducer = (state = initialState, action) => {
+
+const rootReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case ADD_TO_CART:
       return { ...state, cart: [...state.cart, action.item] };

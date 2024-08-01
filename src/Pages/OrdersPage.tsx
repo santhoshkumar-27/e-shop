@@ -1,8 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { CartItem, State } from '../Shared/interface';
 
 const OrdersPage = () => {
-  const orders = useSelector(state => state.orders);
+  const orders = useSelector((state: State) => state.orders);
 
   return (
     <div>
@@ -12,7 +13,7 @@ const OrdersPage = () => {
           <li key={order.id}>
             Order ID: {order.id}
             <ul>
-              {order.items.map(item => (
+              {order.items.map((item : CartItem) => (
                 <li key={item.id}>{item.name} - {item.quantity}</li>
               ))}
             </ul>
